@@ -1,6 +1,6 @@
 # react-cli-diy
 
-从0开始构建一个自己的React脚手架
+从0开始使用webpack构建一个React脚手架
 
 ## 项目使用：
 ```
