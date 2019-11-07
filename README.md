@@ -112,6 +112,7 @@ rules:[
   },
 ]
 ```
+postcss-loader处理兼容前缀需要一个单独的配置文件postcss.config.js。
 
 如上述配置处理css的话，样式文件被插入到html模版内，我们想抽离css文件，通过link方式引入：
 
