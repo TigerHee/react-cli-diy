@@ -240,3 +240,33 @@ watchOptions: {
 ```
 
 最后`npm run build`和`npm run dev`都可以完美运行了，脚手架构建成功。
+
+定义可能会用到的全局环境变量：
+
+```
+const webpack = require('webpack');
+
+// 生产环境：
+plugins: [
+  new webpack.DefinePlugin({
+    ENV: JSON.stringify('PROD')
+  })
+]
+
+// 开发环境：
+plugins: [
+  new webpack.DefinePlugin({
+    ENV: JSON.stringify('DEV')
+  })
+]
+```
+
+再在压缩代码里加个版权声明:
+
+```
+const webpack = require('webpack');
+
+plugins: [
+  new webpack.BannerPlugin('tigerHee 2019')
+]
+```
