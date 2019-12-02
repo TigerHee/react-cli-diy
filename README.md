@@ -3,7 +3,7 @@
 从0开始使用webpack构建一个React脚手架
 
 ## 项目使用：
-```
+```js
 git clone git@github.com:TigerHee/react-cli-diy.git
 
 cd react-cli-diy
@@ -35,7 +35,7 @@ npm run build
 `npm i webpack webpack-cli webpack-merge -D`
 
 修改webpack.config.js文件：
-```
+```js
 module.exports = {
   entry: './src/index.js',  // 入口
   output: {                 // 出口
@@ -46,7 +46,7 @@ module.exports = {
 ```
 使用webpack-merge包merge公共配置文件分别到生产和开发配置文件：
 
-```
+```js
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.js')
 
@@ -61,7 +61,7 @@ module.exports = merge(baseConfig, {
 
 公共配置内使用`html-webpack-plugin`来使用index.html模版：
 
-```
+```js
 plugins: [
   new HtmlWebpackPlugin({
     template: './public/index.html',
@@ -76,7 +76,7 @@ plugins: [
 ```
 开发模式需要使用到开发服务器：
 
-```
+```js
 devServer: { // 内置开发服务器配置
   port: 3000,
   progress: true,
@@ -90,7 +90,7 @@ devServer: { // 内置开发服务器配置
 
 配置好上诉基本配置之后在`package.json`内设置启动脚本：
 
-```
+```js
 "scripts": {
   "build": "webpack  --config webpack.prod.js",
   "dev": "webpack-dev-server --config webpack.dev.js"
@@ -99,7 +99,7 @@ devServer: { // 内置开发服务器配置
 
 接下来在公共配置里设置处理css与less：
 
-```
+```js
 rules:[
   {
     test: /\.(css|less)$/,
@@ -118,7 +118,7 @@ postcss-loader处理兼容前缀需要一个单独的配置文件postcss.config.
 
 `npm i mini-css-extract-plugin -D`
 
-```
+```js
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 {
@@ -151,7 +151,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 修改生产环境配置：
 
-```
+```js
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 plugins:[
@@ -165,7 +165,7 @@ plugins:[
 
 `npm i optimize-css-assets-webpack-plugin uglifyjs-webpack-plugin -D`
 
-```
+```js
 optimization: {              // 优化项
   minimizer: [
     new UglifyJsPlugin({     // 优化js
@@ -185,7 +185,7 @@ optimization: {              // 优化项
 
 `npm i @babel/preset-react -D`
 
-```
+```js
 {
   test: /\.(js|jsx)$/,
   use: {
@@ -215,7 +215,7 @@ optimization: {              // 优化项
 
 `npm i file-loader url-loader -D`
 
-```
+```js
 {
   test: /\.(png|jpg|gif)$/,
   use: {
@@ -230,7 +230,7 @@ optimization: {              // 优化项
 
 开发模式需要监听更改热更新：
 
-```
+```js
 watch: true,
 watchOptions: {
   poll: 1000,              // 每秒监听1000次
@@ -243,7 +243,7 @@ watchOptions: {
 
 定义可能会用到的全局环境变量：
 
-```
+```js
 const webpack = require('webpack');
 
 // 生产环境：
@@ -263,7 +263,7 @@ plugins: [
 
 再在压缩代码里加个版权声明:
 
-```
+```js
 const webpack = require('webpack');
 
 plugins: [
